@@ -4,7 +4,7 @@
 #
 Name     : itsdangerous
 Version  : 0.24
-Release  : 15
+Release  : 16
 URL      : https://pypi.python.org/packages/source/i/itsdangerous/itsdangerous-0.24.tar.gz
 Source0  : https://pypi.python.org/packages/source/i/itsdangerous/itsdangerous-0.24.tar.gz
 Summary  : Various helpers to pass trusted data to untrusted environments and back.
