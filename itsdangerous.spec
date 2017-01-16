@@ -4,7 +4,7 @@
 #
 Name     : itsdangerous
 Version  : 0.24
-Release  : 19
+Release  : 20
 URL      : https://pypi.python.org/packages/source/i/itsdangerous/itsdangerous-0.24.tar.gz
 Source0  : https://pypi.python.org/packages/source/i/itsdangerous/itsdangerous-0.24.tar.gz
 Summary  : Various helpers to pass trusted data to untrusted environments and back.
@@ -35,18 +35,21 @@ python components for the itsdangerous package.
 %setup -q -n itsdangerous-0.24
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484550381
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=intel.com,localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 python tests.py
 %install
+export SOURCE_DATE_EPOCH=1484550381
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
