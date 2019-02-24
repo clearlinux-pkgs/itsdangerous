@@ -6,7 +6,7 @@
 #
 Name     : itsdangerous
 Version  : 1.1.0
-Release  : 25
+Release  : 26
 URL      : https://files.pythonhosted.org/packages/68/1a/f27de07a8a304ad5fa817bbe383d1238ac4396da447fa11ed937039fa04b/itsdangerous-1.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/68/1a/f27de07a8a304ad5fa817bbe383d1238ac4396da447fa11ed937039fa04b/itsdangerous-1.1.0.tar.gz
 Source99 : https://files.pythonhosted.org/packages/68/1a/f27de07a8a304ad5fa817bbe383d1238ac4396da447fa11ed937039fa04b/itsdangerous-1.1.0.tar.gz.asc
@@ -16,7 +16,6 @@ License  : BSD-3-Clause
 Requires: itsdangerous-license = %{version}-%{release}
 Requires: itsdangerous-python = %{version}-%{release}
 Requires: itsdangerous-python3 = %{version}-%{release}
-Requires: Sphinx
 BuildRequires : buildreq-distutils3
 
 %description
@@ -61,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549289363
+export SOURCE_DATE_EPOCH=1551028517
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
