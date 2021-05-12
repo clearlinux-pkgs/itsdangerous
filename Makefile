@@ -1,5 +1,5 @@
 PKG_NAME := itsdangerous
-URL = https://files.pythonhosted.org/packages/68/1a/f27de07a8a304ad5fa817bbe383d1238ac4396da447fa11ed937039fa04b/itsdangerous-1.1.0.tar.gz
+URL = https://files.pythonhosted.org/packages/af/1a/d00de29ae487412998f4a2172f0e8322dbe707d4475d981daec560b0ff58/itsdangerous-2.0.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
