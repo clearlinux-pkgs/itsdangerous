@@ -5,14 +5,15 @@
 # Source0 file verified with key 0x7A1C87E3F5BC42A8 (davidism@gmail.com)
 #
 Name     : itsdangerous
-Version  : 2.0.0
-Release  : 42
-URL      : https://files.pythonhosted.org/packages/af/1a/d00de29ae487412998f4a2172f0e8322dbe707d4475d981daec560b0ff58/itsdangerous-2.0.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/af/1a/d00de29ae487412998f4a2172f0e8322dbe707d4475d981daec560b0ff58/itsdangerous-2.0.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/af/1a/d00de29ae487412998f4a2172f0e8322dbe707d4475d981daec560b0ff58/itsdangerous-2.0.0.tar.gz.asc
+Version  : 2.0.1
+Release  : 43
+URL      : https://files.pythonhosted.org/packages/58/66/d6c5859dcac92b442626427a8c7a42322068c5cd5d4a463ce78b93f730b7/itsdangerous-2.0.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/58/66/d6c5859dcac92b442626427a8c7a42322068c5cd5d4a463ce78b93f730b7/itsdangerous-2.0.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/58/66/d6c5859dcac92b442626427a8c7a42322068c5cd5d4a463ce78b93f730b7/itsdangerous-2.0.1.tar.gz.asc
 Summary  : Safely pass data to untrusted environments and back.
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: itsdangerous-license = %{version}-%{release}
 Requires: itsdangerous-python = %{version}-%{release}
 Requires: itsdangerous-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -34,6 +35,14 @@ BuildRequires : buildreq-distutils3
         Installing
         ----------
 
+%package license
+Summary: license components for the itsdangerous package.
+Group: Default
+
+%description license
+license components for the itsdangerous package.
+
+
 %package python
 Summary: python components for the itsdangerous package.
 Group: Default
@@ -54,15 +63,15 @@ python3 components for the itsdangerous package.
 
 
 %prep
-%setup -q -n itsdangerous-2.0.0
-cd %{_builddir}/itsdangerous-2.0.0
+%setup -q -n itsdangerous-2.0.1
+cd %{_builddir}/itsdangerous-2.0.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620828084
+export SOURCE_DATE_EPOCH=1621357358
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -74,6 +83,8 @@ python3 setup.py build
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/itsdangerous
+cp %{_builddir}/itsdangerous-2.0.1/LICENSE.rst %{buildroot}/usr/share/package-licenses/itsdangerous/a814758bca3dc0a25555dabbf2576cdc43cd8423
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -81,6 +92,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/itsdangerous/a814758bca3dc0a25555dabbf2576cdc43cd8423
 
 %files python
 %defattr(-,root,root,-)
